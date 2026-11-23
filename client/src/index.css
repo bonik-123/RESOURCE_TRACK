@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --et-deepest: #06141B;
+  --et-dark: #11212D;
+  --et-mid: #253745;
+  --et-steel: #4A5C6A;
+  --et-muted: #9BA8AB;
+  --et-light: #CCD0CF;
+}
+
+@layer base {
+  body {
+    background-color: var(--et-deepest);
+    color: var(--et-light);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: -0.011em;
+  }
+}
+
+/* Custom slim scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 92, 106, 0.5);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(155, 168, 171, 0.6);
+}
+
+/* Soft pulse animation - DO NOT REMOVE */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.et-shimmer {
+  background: linear-gradient(90deg, var(--et-dark) 25%, var(--et-mid) 50%, var(--et-dark) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glow effects */
+.et-glow-emerald { box-shadow: 0 0 12px rgba(16, 185, 129, 0.15); }
+.et-glow-rose { box-shadow: 0 0 12px rgba(244, 63, 94, 0.2); }
+.et-glow-amber { box-shadow: 0 0 12px rgba(245, 158, 11, 0.15); }
+
+/* Print styling for QR tags */
+@media print {
+  body * { visibility: hidden; }
+  #printable-tags-area, #printable-tags-area * { visibility: visible; }
+  #printable-tags-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10mm;
+  }
+}
